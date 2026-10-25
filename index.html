@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Asadores Rural | Herrería para cocinar en el campo</title>
 <meta name="description" content="Asadores prensa, discos de arado, braceros y más. Herrería artesanal en Trelew.">
-<link rel="icon" type="image/png" href="Imagenes/icono.png?v=2">
+<link rel="icon" type="image/png" href="imagenes/icono.png?v=2">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script&family=Work+Sans:ital,wght@0,400;0,600;1,400&display=swap">
 <style>
 :root{
@@ -230,13 +230,13 @@ var ESLOGAN = "Más que un producto,\nUna sensación de satisfacción.";
 
 /* ---- IMAGENES: tus imágenes propias. Si el archivo existe en la carpeta se usa; si no, queda el diseño liso ---- */
 var IMAGENES = {
-  logo:         "Imagenes/logo.png",     // reemplaza el título de la portada
-  fondoPagina:  "Imagenes/FondoPag/fondopag1.webp",    // fondo de toda la página
-  fondoPortada: "Imagenes/portada.jpg",  // fondo solo de la portada
+  logo:         "imagenes/logo.png",     // reemplaza el título de la portada
+  fondoPagina:  "imagenes/fondopag/fondopag1.webp",    // fondo de toda la página
+  fondoPortada: "imagenes/portada.jpg",  // fondo solo de la portada
   videoPortada: "videos/portada.mp4",    // video de fondo de la portada (opcional)
-  tablon:       "Imagenes/tablon.jpg",   // barra de título de cada producto
-  vineta:       "Imagenes/vineta.png",   // viñeta de las listas (dirección y horario)
-  boton:        "Imagenes/boton.png"     // fondo de los botones
+  tablon:       "imagenes/tablon.jpg",   // barra de título de cada producto
+  vineta:       "imagenes/vineta.png",   // viñeta de las listas (dirección y horario)
+  boton:        "imagenes/boton.png"     // fondo de los botones
 };
 
 /* ---- EVENTOS: agregá, cambiá o borrá líneas. Cada línea es un evento ---- */
@@ -248,15 +248,15 @@ var EVENTOS = [
 /* ---- PRODUCTOS: cada bloque { } es una tarjeta. "foto" es el archivo de la imagen ---- */
 var PRODUCTOS = [
   { nombre: "Asador prensa", texto: "Varios tamaños, pensados para familias chicas, grandes o grupos.",
-    consulta: "el asador prensa", fotos: ["Imagenes/asador1.jpg", "Imagenes/asador2.jpg", "Imagenes/asador3.jpg", "Imagenes/asador4.jpg"] },
+    consulta: "el asador prensa", fotos: ["imagenes/asador1.jpg", "imagenes/asador2.jpg", "imagenes/asador3.jpg", "imagenes/asador4.jpg"] },
   { nombre: "Disco de arado", texto: "Para cocinar al fuego como se hace en el campo. Distintos tamaños.",
-    consulta: "el disco de arado", fotos: ["Imagenes/discos1.jpg"] },
+    consulta: "el disco de arado", fotos: ["imagenes/discos1.jpg"] },
   { nombre: "Brasero", texto: "Para tener brasas a mano en el quincho o en el patio.",
-    consulta: "el brasero", fotos: ["Imagenes/bracero1.jpg"] },
+    consulta: "el brasero", fotos: ["imagenes/bracero1.jpg"] },
   { nombre: "Juego de pala y atizador", texto: "Para mover y acomodar las brasas con comodidad.",
-    consulta: "el juego de pala y atizador", fotos: ["Imagenes/pala1.jpg"] },
+    consulta: "el juego de pala y atizador", fotos: ["imagenes/pala1.jpg"] },
   { nombre: "Plancheta de 2 hornallas", texto: "Para cocinar sobre fuego. Próximamente: otros tamaños y versión con tapa.",
-    consulta: "la plancheta de 2 hornallas", fotos: ["Imagenes/placheta1.jpg"] }
+    consulta: "la plancheta de 2 hornallas", fotos: ["imagenes/placheta1.jpg"] }
 ];
 
 /* ---- VIDEOS: archivos de video, por ejemplo "videos/forja.mp4". Vacío = muestra espacios reservados ---- */
@@ -389,7 +389,8 @@ if (IMAGENES.videoPortada) {
     vp.play();
   };
   vp.src = IMAGENES.videoPortada;
-}
+} 
+//holi
 </script>
 </body>
 </html>
