@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Asadores Rural | Herrería para cocinar en el campo</title>
+<meta name="description" content="Asadores prensa, discos de arado, braceros y más. Herrería artesanal en Trelew.">
+<link rel="icon" type="image/png" href="imagenes/icono.png?v=2">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script&family=Work+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{
+  --bg:#F4F4F2; --card:#FFFFFF; --ink:#1E1E1E; --muted:#555555; --line:#CFCFCB;
+  --btn:#222222; --btn-tx:#FFFFFF;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#161616; --card:#212121; --ink:#EDEDED; --muted:#A5A5A5; --line:#3A3A3A;
+    --btn:#a80000; --btn-tx:#ffffff;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#161616; --card:#212121; --ink:#EDEDED; --muted:#A5A5A5; --line:#3A3A3A;
+  --btn:#EDEDED; --btn-tx:#161616;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 "Work Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bebas Neue","Arial Narrow",Impact,sans-serif;line-height:1.05;margin:0;letter-spacing:.05em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{max-width:none;margin:0 auto;padding:0 20px}
+.btn{display:inline-block;padding:15px 26px;font-size:1.4rem;border-radius:4px;font-weight:600;text-decoration:none;
+  border:2px solid var(--btn);background:var(--btn);color:var(--btn-tx)}
+.btn.alt{background:transparent;color:inherit;border-color:currentColor}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+
+/* Portada */
+.hero{position:relative;overflow:hidden;padding:48px 0 44px;text-align:center;border-bottom:1px solid var(--line)}
+.hero>.wrap{position:relative;z-index:1}
+.hero h1{font-size:clamp(3rem,13vw,6.5rem);font-weight:800;text-transform:uppercase;letter-spacing:.02em}
+.hero h1 img{display:block;margin:0 auto;width:100%;max-width:360px;height:auto}
+.eslogan{font-family:"Dancing Script",cursive;font-style:normal;font-size:2rem;line-height:1.1;margin:14px auto 8px;max-width:34ch;white-space:pre-line}
+.intro{max-width:44ch;margin:0 auto 24px;color:var(--muted)}
+.hero .btns{justify-content:center}
+
+/* Eventos */
+.eventos{background:var(--card);border-bottom:1px solid var(--line);padding:22px 0}
+.eventos h2{font-size:2rem;margin-bottom:12px}
+#eventos{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+#eventos li{display:flex;gap:26px;align-items:center;font-size:1rem}
+.fecha{font:400 2.6rem/1 "Bebas Neue",sans-serif;min-width:3.6ch;flex-shrink:0;white-space:nowrap}
+
+section{padding:48px 0 8px}
+h2{font-size:clamp(2rem,6vw,2rem);margin-bottom:8px}
+.lead{color:var(--muted);max-width:55ch;margin:0 0 28px}
+
+/* Productos */
+.grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr))}
+.prod{background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column}
+.prod h3{padding:12px 16px;font-size:1.6rem;border-bottom:1px solid var(--line);letter-spacing:.08em}
+.foto{aspect-ratio:1/1;overflow:hidden}
+.foto img{width:100%;height:100%;object-fit:cover;display:block}
+.foto.vacia{display:grid;place-items:center;text-align:center;padding:12px;color:var(--muted);background:var(--bg)}
+.carrusel{position:relative}
+.carrusel .pista{display:flex;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;aspect-ratio:1/1}
+.carrusel .pista::-webkit-scrollbar{display:none}
+.carrusel .pista>*{flex:0 0 100%;min-width:0;width:100%;height:100%;scroll-snap-align:center;scroll-snap-stop:always;object-fit:cover;display:block}
+.carrusel .flecha{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;border-radius:50%;background:var(--btn);color:var(--btn-tx);font-size:1.6rem;line-height:1;cursor:pointer}
+.carrusel .izq{left:8px}
+.carrusel .der{right:8px}
+.prod .cuerpo{padding:14px 18px 20px;display:flex;flex-direction:column;gap:12px;flex:1}
+.prod p{margin:0;color:var(--muted);font-size:1rem;line-height:1.15}
+.prod .btn{margin-top:auto;text-align:center}
+
+/* Cómo comprar (es una secuencia: lleva números) */
+ol.pasos{margin:0;padding:0;list-style:none;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));counter-reset:p}
+ol.pasos li{counter-increment:p;padding:16px 18px;background:var(--card);border:1px solid var(--line)}
+ol.pasos li::before{content:counter(p);display:block;font:400 2.3rem "Alfa Slab One",sans-serif}
+
+/* Videos */
+.videos{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-bottom:20px}
+.videos video{width:100%;background:#000}
+
+/* Botón de Instagram: solo contorno con degradé */
+#btn-instagram{
+  background:transparent;
+  border:3px solid transparent;
+  border-image:linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4) 1;
+  color:inherit;
+  text-shadow:none;
+}
+
+/* Feria */
+.feria{background:var(--card);border:1px solid var(--line);padding:22px 24px;display:grid;gap:14px}
+.feria h3{font-size:2rem}
+.datos{margin:0;padding:0 0 0 22px;display:grid;gap:6px}
+.datos li{padding-left:6px}
+
+footer{margin-top:56px;border-top:1px solid var(--line);padding:32px 0 40px;text-align:center}
+footer p{margin:6px 0}
+footer .btns{justify-content:center;margin-top:14px}
+
+/* Imágenes propias: se activan solas si el archivo existe (bloque IMAGENES del script) */
+/* Fondo fijo y listón central */
+body{background:color-mix(in srgb,var(--bg) 80%,#000)}
+body.fondo-propio::before{
+  content:"";position:fixed;inset:0;z-index:-1;
+  background:var(--img-fondo) center/cover no-repeat;
+  filter:blur(5px);          /* difuminado: 0px = nítida, 12px = muy borrosa */
+  transform:scale(1.06);     /* evita bordes raros por el difuminado */
+}
+.liston{
+  max-width:900px;margin:0 auto;min-height:100vh;
+  background:color-mix(in srgb,var(--bg) 80%,transparent); /* 100% = sólido, 70% = más transparente */
+  box-shadow:0 0 40px #0009;
+}
+.hero.portada-propia{background:var(--img-portada) center/cover}
+.hero.portada-propia,.hero.con-video{color:#fff}
+.hero.portada-propia .intro,.hero.con-video .intro{color:#fff}
+.hero.portada-propia::after,.hero.con-video::after{content:"";position:absolute;inset:0;background:#00000066}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+body.boton-propio .btn{background:var(--img-boton) center/100% 100%;border:0;color:#fff;text-shadow:0 1px 3px #000c}
+body.vineta-propia .datos{list-style:none;padding:0}
+body.vineta-propia .datos li{padding-left:30px;background:var(--img-vineta) no-repeat left 3px/20px}
+body.tablon-propio .prod h3{background:var(--img-tablon) center/cover;color:#fff;text-shadow:0 1px 3px #000c}
+
+/* Ajustes solo para celular (pantallas de hasta 700px de ancho) */
+@media (max-width:700px){
+  body{font-size:1.05rem}
+  .eslogan{font-size:1.5rem}
+  .btn{font-size:1.05rem;padding:13px 22px}
+  .prod p{font-size:1.05rem}
+  #eventos li{font-size:1rem;gap:16px}
+  .fecha{font-size:2rem}
+  .prod h3{font-size:1.6rem}
+}
+
+</style>
+</head>
+<body>
+<div class="liston">
+<!-- ===== SECCIÓN PORTADA ===== -->
+<header class="hero" id="portada">
+  <div class="wrap">
+    <h1><span id="titulo">Asadores Rural</span><img id="logo" alt="Asadores Rural" hidden></h1>
+    <p class="eslogan" id="eslogan"></p>
+    <p class="intro">Herrería artesanal para cocinar al aire libre. Hecho a mano, para el campo, el quincho y la familia.</p>
+    <div class="btns">
+      <a class="btn wa" href="#" data-msg="Hola, ¿qué tal? Quería hacer una consulta.">Consultar por WhatsApp</a>
+      <a class="btn alt" href="#productos">Ver productos</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== SECCIÓN EVENTOS (los datos se editan en el script, bloque EVENTOS) ===== -->
+<aside class="eventos">
+  <div class="wrap">
+    <h2>Próximos eventos</h2>
+    <ul id="eventos"></ul>
+  </div>
+</aside>
+
+<main class="wrap">
+
+  <!-- ===== SECCIÓN PRODUCTOS (los datos se editan en el script, bloque PRODUCTOS) ===== -->
+  <section id="productos">
+    <h2>Productos</h2>
+    <p class="lead">Fabricamos en distintos tamaños para que elijas según tu espacio y cuántos son en la mesa.</p>
+    <div class="grid" id="lista-productos"></div>
+  </section>
+
+  <!-- ===== SECCIÓN CÓMO COMPRAR ===== -->
+  <section>
+    <h2>Cómo comprar</h2>
+    <p class="lead">Sin vueltas: hablamos directo por WhatsApp.</p>
+    <ol class="pasos">
+      <li>Escribinos y contanos qué producto buscás y para cuántas personas.</li>
+      <li>Te confirmamos tamaño, precio y tiempo de entrega.</li>
+      <li>Coordinamos el pago y el retiro o envío.</li>
+    </ol>
+  </section>
+
+  <!-- ===== SECCIÓN VIDEOS (los datos se editan en el script, bloque VIDEOS) ===== -->
+  <section>
+    <h2>Mirá cómo trabajamos</h2>
+    <p class="lead">La forja, los asadores terminados y un asado en marcha. Más videos en Instagram.</p>
+    <div class="videos" id="lista-videos"></div>
+    <a class="btn alt" id="btn-instagram" href="#" target="_blank" rel="noopener"></a>
+  </section>
+
+  <!-- ===== SECCIÓN FERIA (los datos se editan en el script, bloque FERIA) ===== -->
+  <section>
+    <div class="feria">
+      <h3 id="feria-nombre"></h3>
+      <ul class="datos">
+        <li id="feria-dir"></li>
+        <li id="feria-hor"></li>
+      </ul>
+      <div class="btns"><a class="btn" id="feria-mapa" href="#" target="_blank" rel="noopener">Cómo llegar</a></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== SECCIÓN PIE DE PÁGINA ===== -->
+<footer>
+  <div class="wrap">
+    <p>Asadores Rural. Más que un producto, una sensación de satisfacción.</p>
+    <div class="btns">
+      <a class="btn wa" href="#" data-msg="Hola, ¿qué tal? Quería hacer una consulta.">Escribinos por WhatsApp</a>
+    </div>
+  </div>
+</footer></div>
+
+<script>
+/* ============================================================
+   DATOS DE LA PÁGINA — todo lo que cambiás está en esta zona.
+   Buscá con Ctrl + F el nombre del bloque: CONTACTO, ESLOGAN,
+   IMAGENES, EVENTOS, PRODUCTOS, VIDEOS o FERIA.
+   ============================================================ */
+
+/* ---- CONTACTO: WhatsApp (código de país + área + número) e Instagram ---- */
+var CONTACTO = { whatsapp: "5492804010287", instagram: "arielnhinaa" };
+
+/* ---- ESLOGAN: la frase que aparece bajo el título ---- */
+var ESLOGAN = "Más que un producto,\nUna sensación de satisfacción.";
+
+/* ---- IMAGENES: tus imágenes propias. Si el archivo existe en la carpeta se usa; si no, queda el diseño liso ---- */
+var IMAGENES = {
+  logo:         "imagenes/logo.png",     // reemplaza el título de la portada
+  fondoPagina:  "imagenes/fondopag/fondopag1.webp",    // fondo de toda la página
+  fondoPortada: "imagenes/portada.jpg",  // fondo solo de la portada
+  videoPortada: "videos/portada.mp4",    // video de fondo de la portada (opcional)
+  tablon:       "imagenes/tablon.jpg",   // barra de título de cada producto
+  vineta:       "imagenes/vineta.png",   // viñeta de las listas (dirección y horario)
+  boton:        "imagenes/boton.png"     // fondo de los botones
+};
+
+/* ---- EVENTOS: agregá, cambiá o borrá líneas. Cada línea es un evento ---- */
+var EVENTOS = [
+  { fecha: "25/12", nombre: "Navidad",   texto: "Reservá tu asador con tiempo." },
+  { fecha: "31/12", nombre: "Año Nuevo", texto: "Todavía llegás a tener el tuyo para brindar." }
+];
+
+/* ---- PRODUCTOS: cada bloque { } es una tarjeta. "foto" es el archivo de la imagen ---- */
+var PRODUCTOS = [
+  { nombre: "Asador prensa", texto: "Varios tamaños, pensados para familias chicas, grandes o grupos.",
+    consulta: "el asador prensa", fotos: ["imagenes/asador1.jpg", "imagenes/asador2.jpg", "imagenes/asador3.jpg", "imagenes/asador4.jpg"] },
+  { nombre: "Disco de arado", texto: "Para cocinar al fuego como se hace en el campo. Distintos tamaños.",
+    consulta: "el disco de arado", fotos: ["imagenes/discos1.jpg", "imagenes/discos2.jpg", "imagenes/discos3.jpg", "imagenes/discos4.jpg"] },
+  { nombre: "Brasero", texto: "Para tener brasas a mano en el quincho o en el patio.",
+    consulta: "el brasero", fotos: ["imagenes/bracero1.jpg", "imagenes/bracero2.jpg", "imagenes/bracero3.jpg"] },
+  { nombre: "Juego de pala y atizador", texto: "Para mover y acomodar las brasas con comodidad.",
+    consulta: "el juego de pala y atizador", fotos: ["imagenes/pala1.jpg", "imagenes/pala2.jpg", "imagenes/pala3.jpg"] },
+  { nombre: "Plancheta de 2 hornallas", texto: "Para cocinar sobre fuego. Próximamente: otros tamaños y versión con tapa.",
+    consulta: "la plancheta de 2 hornallas", fotos: ["imagenes/placheta1.jpg", "imagenes/placheta2.jpg", "imagenes/placheta3.jpg"] }
+];
+
+/* ---- VIDEOS: archivos de video, por ejemplo "videos/forja.mp4". Vacío = muestra espacios reservados ---- */
+var VIDEOS = [];
+
+/* ---- FERIA: lugar, horario y enlace del mapa ---- */
+var FERIA = {
+  nombre: "Paseo Ferial Trelew",
+  direccion: "Edison 175, Trelew",
+  horario: "Sábados de 9 a 14 hs",
+  mapa: "https://www.google.com/maps/search/?api=1&query=Paseo+Ferial+Trelew+Edison+175+Trelew+Chubut"
+};
+
+/* ============================================================
+   De acá para abajo no hace falta tocar nada.
+   ============================================================ */
+function el(tag, clase, texto) {
+  var e = document.createElement(tag);
+  if (clase) e.className = clase;
+  if (texto !== undefined) e.textContent = texto;
+  return e;
+}
+function linkWA(mensaje) {
+  return "https://wa.me/" + CONTACTO.whatsapp + "?text=" + encodeURIComponent(mensaje);
+}
+
+document.getElementById("eslogan").textContent = ESLOGAN;
+
+document.querySelectorAll("a.wa").forEach(function (a) {
+  a.href = linkWA(a.dataset.msg || "Hola");
+});
+
+var listaEventos = document.getElementById("eventos");
+EVENTOS.forEach(function (ev) {
+  var li = el("li");
+  li.appendChild(el("span", "fecha", ev.fecha));
+  var d = el("span");
+  d.appendChild(el("strong", "", ev.nombre + ". "));
+  d.appendChild(document.createTextNode(ev.texto));
+  li.appendChild(d);
+  listaEventos.appendChild(li);
+});
+
+var listaProductos = document.getElementById("lista-productos");
+PRODUCTOS.forEach(function (p) {
+  var card = el("article", "prod");
+  card.appendChild(el("h3", "", p.nombre));
+  var fotos = p.fotos || [p.foto];
+  var car = el("div", "carrusel");
+  var pista = el("div", "pista");
+  fotos.forEach(function (archivo, n) {
+    var img = new Image();
+    img.alt = p.nombre + " (foto " + (n + 1) + ")";
+    img.loading = "lazy";
+    img.onerror = function () {
+      pista.replaceChild(el("div", "foto vacia", "Foto " + (n + 1) + ": " + p.nombre), img);
+    };
+    img.src = archivo;
+    pista.appendChild(img);
+  });
+  car.appendChild(pista);
+  if (fotos.length > 1) {
+    [["izq", "‹", -1], ["der", "›", 1]].forEach(function (f) {
+      var b = el("button", "flecha " + f[0], f[1]);
+      b.type = "button";
+      b.setAttribute("aria-label", f[2] < 0 ? "Foto anterior" : "Foto siguiente");
+      b.onclick = function () { pista.scrollBy({ left: f[2] * pista.clientWidth, behavior: "smooth" }); };
+      car.appendChild(b);
+    });
+  }
+  card.appendChild(car);
+  var cuerpo = el("div", "cuerpo");
+  cuerpo.appendChild(el("p", "", p.texto));
+  var b = el("a", "btn", "Consultar disponibilidad");
+  b.href = linkWA("Hola, ¿qué tal? Me interesa saber si tienen disponible " + p.consulta + ".");
+  cuerpo.appendChild(b);
+  card.appendChild(cuerpo);
+  listaProductos.appendChild(card);
+});
+
+var listaVideos = document.getElementById("lista-videos");
+if (VIDEOS.length) {
+  VIDEOS.forEach(function (v) {
+    var vd = el("video");
+    vd.src = v; vd.controls = true; vd.preload = "metadata";
+    listaVideos.appendChild(vd);
+  });
+} else {
+  ["Video 1", "Video 2"].forEach(function (t) { listaVideos.appendChild(el("div", "foto vacia", t)); });
+}
+var ig = document.getElementById("btn-instagram");
+ig.href = "https://www.instagram.com/" + CONTACTO.instagram;
+ig.textContent = "Seguinos en Instagram @" + CONTACTO.instagram;
+
+document.getElementById("feria-nombre").textContent = FERIA.nombre;
+document.getElementById("feria-dir").textContent = FERIA.direccion;
+document.getElementById("feria-hor").textContent = FERIA.horario;
+document.getElementById("feria-mapa").href = FERIA.mapa;
+
+/* Imágenes propias: se usan solo si el archivo existe */
+function probar(archivo, siCarga) {
+  if (!archivo) return;
+  var t = new Image();
+  t.onload = function () { siCarga(archivo); };
+  t.src = archivo;
+}
+function activar(clase, variable, archivo, objetivo) {
+  probar(archivo, function (a) {
+    document.documentElement.style.setProperty(variable, "url('" + a + "')");
+    (objetivo || document.body).classList.add(clase);
+  });
+}
+probar(IMAGENES.logo, function (a) {
+  var i = document.getElementById("logo");
+  i.src = a; i.hidden = false;
+  document.getElementById("titulo").hidden = true;
+});
+activar("fondo-propio", "--img-fondo", IMAGENES.fondoPagina);
+activar("vineta-propia", "--img-vineta", IMAGENES.vineta);
+activar("boton-propio", "--img-boton", IMAGENES.boton);
+activar("tablon-propio", "--img-tablon", IMAGENES.tablon);
+activar("portada-propia", "--img-portada", IMAGENES.fondoPortada, document.getElementById("portada"));
+if (IMAGENES.videoPortada) {
+  var vp = el("video");
+  vp.muted = true; vp.loop = true; vp.autoplay = true; vp.playsInline = true;
+  vp.onloadeddata = function () {
+    var h = document.getElementById("portada");
+    h.insertBefore(vp, h.firstChild);
+    h.classList.add("con-video");
+    vp.play();
+  };
+  vp.src = IMAGENES.videoPortada;
+}
+</script>
+</body>
+</html>
